@@ -1,0 +1,17 @@
+#bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--contentSpacing) * 2);
+  background-color: var(--accentColor);
+}
+
+#subheadingWrap {
+  background-color: var(--lightColor);
+  padding: var(--contentSpacing);
+}
+
+#subheading {
+  text-transform: uppercase;
+  color: var(--secondaryBackgroundColor);
+}

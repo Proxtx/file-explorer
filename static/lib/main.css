@@ -1,0 +1,25 @@
+:host,
+:root {
+  --accentColor: #81b29a;
+  --secondaryBackgroundColor: #3d405b;
+  --lightColor: #f4f1de;
+  --backgroundColor: #2d304b;
+  --contentSpacing: 8px;
+}
+
+@font-face {
+  font-family: Finlandica;
+  src: url(Finlandica.ttf);
+}
+
+body {
+  font-family: Finlandica;
+  margin: 0;
+  color: #ffffff;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}

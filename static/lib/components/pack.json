@@ -1,0 +1,16 @@
+{
+  "components": {
+    "file": {
+      "name": "f-file",
+      "template": "/components/file/index.html",
+      "component": "/components/file/main.js",
+      "styles": ["/main.css", "/components/file/style.css"]
+    },
+    "top-bar": {
+      "name": "f-top-bar",
+      "template": "/components/top-bar/index.html",
+      "component": "/components/top-bar/main.js",
+      "styles": ["/main.css", "/components/top-bar/style.css"]
+    }
+  }
+}
