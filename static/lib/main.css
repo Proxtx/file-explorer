@@ -16,6 +16,7 @@ body {
   font-family: Finlandica;
   margin: 0;
   color: #ffffff;
+  background-color: var(--secondaryBackgroundColor);
 }
 
 h1,
