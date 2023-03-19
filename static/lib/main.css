@@ -17,10 +17,19 @@ body {
   margin: 0;
   color: #ffffff;
   background-color: var(--secondaryBackgroundColor);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
 h2,
 h3 {
   margin: 0;
+}
+
+.filesWrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

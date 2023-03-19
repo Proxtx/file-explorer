@@ -11,6 +11,12 @@
       "template": "/components/top-bar/index.html",
       "component": "/components/top-bar/main.js",
       "styles": ["/main.css", "/components/top-bar/style.css"]
+    },
+    "overlay": {
+      "name": "f-overlay",
+      "template": "/components/overlay/index.html",
+      "component": "/components/overlay/main.js",
+      "styles": ["/main.css", "/components/overlay/style.css"]
     }
   }
 }

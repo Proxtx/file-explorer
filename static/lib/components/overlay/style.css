@@ -1,0 +1,28 @@
+:host {
+  --indicatorWidth: 20px;
+  --mainWidth: 70vw;
+  width: var(--indicatorWidth);
+}
+
+#mainContent {
+  width: calc(50vw - var(--indicatorWidth));
+}
+
+#hint {
+  width: var(--indicatorWidth);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#overlay {
+  background-color: var(--backgroundColor);
+  display: flex;
+  height: 100%;
+  width: var(--mainWidth);
+}
+
+:host:focus-within {
+  transform: translateX(calc(var(--mainWidth) * -1 + var(--indicatorWidth)));
+}

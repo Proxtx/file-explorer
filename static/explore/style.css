@@ -1,0 +1,9 @@
+#mainWrap {
+  display: flex;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+f-overlay:focus-within {
+  transform: translateX(calc(var(--mainWidth) * -1 + var(--indicatorWidth)));
+}
