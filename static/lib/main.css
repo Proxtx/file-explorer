@@ -1,10 +1,13 @@
 :host,
-:root {
+:root,
+m-overwrite-container {
   --accentColor: #81b29a;
   --secondaryBackgroundColor: #3d405b;
   --lightColor: #f4f1de;
   --backgroundColor: #2d304b;
   --contentSpacing: 8px;
+  --borderRadius: 4px;
+  --fontFamily: Finladica;
 }
 
 @font-face {

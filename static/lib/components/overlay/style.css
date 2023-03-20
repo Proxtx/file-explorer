@@ -1,11 +1,15 @@
 :host {
-  --indicatorWidth: 20px;
+  --indicatorWidth: 50px;
   --mainWidth: 70vw;
+  --accentColorSave: var(--accentColor);
+  --fontFamilySave: var(--fontFamilySave);
   width: var(--indicatorWidth);
 }
 
 #mainContent {
-  width: calc(50vw - var(--indicatorWidth));
+  width: calc(var(--mainWidth) - var(--indicatorWidth));
+  padding: var(--contentSpacing);
+  box-sizing: border-box;
 }
 
 #hint {
@@ -14,6 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 #overlay {
@@ -21,8 +26,35 @@
   display: flex;
   height: 100%;
   width: var(--mainWidth);
+  transition: 0.5s;
+  transform: translateX(0);
 }
 
-:host:focus-within {
+#arrow {
+  transition: 0.5s;
+  transform: rotate(0deg);
+}
+
+#overlay[data-focused="true"] {
   transform: translateX(calc(var(--mainWidth) * -1 + var(--indicatorWidth)));
+}
+
+#overlay[data-focused="true"] #arrow {
+  transform: rotate(180deg);
+}
+
+#sortWrap {
+  --varCascading: 0;
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--accentColor);
+  display: flex;
+  overflow: hidden;
+}
+
+.sortButton {
+  --varCascading: 1;
+  --borderRadius: 0px;
+  --accentColor: var(--accentColorSave);
+  --fontFamily: var(--fontFamilySave);
+  width: 100%;
 }
