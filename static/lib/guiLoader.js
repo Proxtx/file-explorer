@@ -10,6 +10,8 @@ await loadPack("/lib/components/pack.json", {
   urlPrefix: "/lib/",
 });
 
+await Promise.all(window.uiBuilder.loadQueue);
+
 document.body.style.opacity = 1;
 
 for (let i of guiLoaded) {
