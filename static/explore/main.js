@@ -1,15 +1,22 @@
 import { manager } from "../lib/apiLoader.js";
 import * as _ from "/lib/guiLoader.js";
 
+console.log(Object.keys(window));
+
 let path = "/";
 
 const filesWrap = document.getElementById("filesWrap");
 const topBar = document.getElementById("topBar");
+const overlay = document.getElementById("overlay");
+
+await window.uiBuilder.ready(overlay);
 
 const refreshFiles = async () => {
   filesWrap.innerHTML = "";
 
-  let files = (await manager.listDirectory(cookie.pwd, path)).directory;
+  let files = (
+    await manager.listDirectory(cookie.pwd, path, overlay.component.sorting)
+  ).directory;
   if (!files) files = [];
 
   let nP = path;
@@ -38,6 +45,10 @@ const createManagedFile = async (content) => {
     }
   });
   return file;
+};
+
+overlay.component.sortChange = () => {
+  refreshFiles();
 };
 
 const changePath = async (newPath) => {
