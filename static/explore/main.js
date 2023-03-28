@@ -1,8 +1,6 @@
 import { manager } from "../lib/apiLoader.js";
 import * as _ from "/lib/guiLoader.js";
 
-console.log(Object.keys(window));
-
 let path = "/";
 
 const filesWrap = document.getElementById("filesWrap");
