@@ -9,7 +9,11 @@ const overlay = document.getElementById("overlay");
 
 await window.uiBuilder.ready(overlay);
 
+let highlightedFiles = [];
+
 const refreshFiles = async () => {
+  highlightedFiles.length = 0;
+
   filesWrap.innerHTML = "";
 
   let files = (
@@ -42,7 +46,22 @@ const createManagedFile = async (content) => {
       changePath(content.path);
     }
   });
+
+  file.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    highlightFile(file);
+  });
   return file;
+};
+
+const highlightFile = (file) => {
+  if (file.component.highlighted) {
+    file.component.highlight(false);
+    highlightedFiles.splice(highlightedFiles.indexOf(file), 1);
+  } else {
+    file.component.highlight(true);
+    highlightedFiles.push(file);
+  }
 };
 
 overlay.component.sortChange = () => {
