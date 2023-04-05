@@ -13,6 +13,7 @@ let highlightedFiles = [];
 
 const refreshFiles = async () => {
   highlightedFiles.length = 0;
+  overlay.component.highlightedFilesUpdate(highlightedFiles);
 
   filesWrap.innerHTML = "";
 
@@ -62,6 +63,8 @@ const highlightFile = (file) => {
     file.component.highlight(true);
     highlightedFiles.push(file);
   }
+
+  overlay.component.highlightedFilesUpdate(highlightedFiles);
 };
 
 overlay.component.sortChange = () => {

@@ -7,12 +7,12 @@ m-overwrite-container {
   --backgroundColor: #2d304b;
   --contentSpacing: 8px;
   --borderRadius: 4px;
-  --fontFamily: Finladica;
+  --fontFamily: Finlandica;
 }
 
 @font-face {
   font-family: Finlandica;
-  src: url(Finlandica.ttf);
+  src: url("/lib/Finlandica.ttf");
 }
 
 body {

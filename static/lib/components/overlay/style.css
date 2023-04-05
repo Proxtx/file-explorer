@@ -10,6 +10,9 @@
   width: calc(var(--mainWidth) - var(--indicatorWidth));
   padding: var(--contentSpacing);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--contentSpacing);
 }
 
 #hint {
@@ -57,4 +60,8 @@
   --accentColor: var(--accentColorSave);
   --fontFamily: var(--fontFamilySave);
   width: 100%;
+}
+
+#delete {
+  --accentColor: red !important;
 }

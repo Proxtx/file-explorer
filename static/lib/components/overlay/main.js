@@ -1,12 +1,21 @@
 export class Component {
   sorting = "name";
 
+  highlightedFiles = [];
+
   constructor(options) {
     this.document = options.shadowDom;
     this.overlay = this.document.getElementById("overlay");
     this.arrow = this.document.getElementById("arrow");
     this.name = this.document.getElementById("name");
     this.date = this.document.getElementById("date");
+    this.copyButton = this.document.getElementById("copy");
+    this.pasteButton = this.document.getElementById("paste");
+    this.deleteButton = this.document.getElementById("delete");
+
+    this.copyButton.addEventListener("click", () => {
+      this.copy(this.highlightedFiles);
+    });
 
     this.name.addEventListener("click", () => {
       this.sorting = "name";
@@ -21,6 +30,8 @@ export class Component {
       this.date.setAttribute("type", "contained");
       this.name.setAttribute("type", "text");
     });
+
+    this.deleteButton.addEventListener("click", () => {});
 
     this.overlay.addEventListener("click", (e) => {
       if (
@@ -38,4 +49,22 @@ export class Component {
   }
 
   sortChange() {}
+
+  highlightedFilesUpdate(highlightedFiles) {
+    this.highlightedFiles = highlightedFiles;
+    if (this.highlightedFiles.length == 0) {
+      this.copyButton.component.funcs.disabled(true);
+      this.deleteButton.component.funcs.disabled(true);
+    } else {
+      this.copyButton.component.funcs.disabled(false);
+      this.deleteButton.component.funcs.disabled(false);
+    }
+  }
+
+  copy(files) {
+    this.filesInClipboard = [...files];
+    if (this.filesInClipboard.length > 0) {
+      this.pasteButton.component.funcs.disabled(false);
+    } else this.pasteButton.component.funcs.disabled(true);
+  }
 }
