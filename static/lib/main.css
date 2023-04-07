@@ -8,6 +8,13 @@ m-overwrite-container {
   --contentSpacing: 8px;
   --borderRadius: 4px;
   --fontFamily: Finlandica;
+  --textColor: var(--lightColor);
+  --grey: rgba(255, 255, 255, 0.12);
+  --greyText: rgba(255, 255, 255, 0.26);
+}
+
+m-text-input {
+  color: var(--textColor);
 }
 
 @font-face {

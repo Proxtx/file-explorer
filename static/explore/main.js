@@ -30,6 +30,8 @@ const refreshFiles = async () => {
     nP = nP.join("/");
   } else nP = path;
 
+  overlay.component.path = nP;
+
   files.unshift({
     path: nP,
     isFolder: true,
@@ -67,7 +69,7 @@ const highlightFile = (file) => {
   overlay.component.highlightedFilesUpdate(highlightedFiles);
 };
 
-overlay.component.sortChange = () => {
+overlay.component.refresh = () => {
   refreshFiles();
 };
 

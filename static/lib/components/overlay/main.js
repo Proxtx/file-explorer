@@ -1,3 +1,5 @@
+import { manager } from "../../apiLoader.js";
+
 export class Component {
   sorting = "name";
 
@@ -19,19 +21,38 @@ export class Component {
 
     this.name.addEventListener("click", () => {
       this.sorting = "name";
-      this.sortChange();
+      this.refresh();
       this.name.setAttribute("type", "contained");
       this.date.setAttribute("type", "text");
     });
 
     this.date.addEventListener("click", () => {
       this.sorting = "date";
-      this.sortChange();
+      this.refresh();
       this.date.setAttribute("type", "contained");
       this.name.setAttribute("type", "text");
     });
 
-    this.deleteButton.addEventListener("click", () => {});
+    this.deleteButton.addEventListener("click", async () => {
+      for (let file of this.highlightedFiles) {
+        await manager.deleteAction(cookie.pwd, file.component.content.path);
+      }
+
+      this.refresh();
+    });
+
+    this.pasteButton.addEventListener("click", async () => {
+      for (let file of this.filesInClipboard) {
+        console.log(this.path);
+        await manager.copyAction(
+          cookie.pwd,
+          file.component.content.path,
+          this.path
+        );
+      }
+
+      this.refresh();
+    });
 
     this.overlay.addEventListener("click", (e) => {
       if (
@@ -48,7 +69,7 @@ export class Component {
     });
   }
 
-  sortChange() {}
+  refresh() {}
 
   highlightedFilesUpdate(highlightedFiles) {
     this.highlightedFiles = highlightedFiles;
