@@ -16,6 +16,40 @@ export class Component {
     this.deleteButton = this.document.getElementById("delete");
     this.command = this.document.getElementById("command");
     this.sendCommand = this.document.getElementById("sendCommand");
+    this.uploadFiles = this.document.getElementById("uploadFiles");
+    this.rename = this.document.getElementById("rename");
+
+    this.uploadFiles.addEventListener("click", () => {
+      let input = document.createElement("input");
+      input.type = "file";
+      input.multiple = true;
+      input.onchange = async (_) => {
+        let files = Array.from(input.files);
+
+        for (let file of files) {
+          let formData = new FormData();
+          formData.append("file", file);
+          await fetch("/upload/?path=" + encodeURIComponent(this.path), {
+            method: "POST",
+            body: formData,
+          });
+        }
+
+        this.refresh();
+      };
+      input.click();
+    });
+
+    this.rename.addEventListener("click", async () => {
+      if (!this.highlightedFiles.length == 1) return;
+      await manager.rename(
+        cookie.pwd,
+        this.highlightedFiles[0].component.content.path,
+        prompt("Name?")
+      );
+
+      this.refresh();
+    });
 
     this.command.component.input.addEventListener("keyup", () => {
       if (this.command.component.value.length > 0) {
@@ -85,12 +119,17 @@ export class Component {
 
   highlightedFilesUpdate(highlightedFiles) {
     this.highlightedFiles = highlightedFiles;
+    this.rename.component.component.values.disabled = true;
     if (this.highlightedFiles.length == 0) {
       this.copyButton.component.funcs.disabled(true);
       this.deleteButton.component.funcs.disabled(true);
     } else {
       this.copyButton.component.funcs.disabled(false);
       this.deleteButton.component.funcs.disabled(false);
+    }
+
+    if (this.highlightedFiles.length == 1) {
+      this.rename.component.component.values.disabled = false;
     }
   }
 

@@ -11,6 +11,6 @@ setConfig({
 let res = await listen(config.port);
 res.app.use(router());
 
-res.app.post(uploadRequest);
+res.app.post("/upload", uploadRequest);
 
 console.log("Server started. Port:", config.port);

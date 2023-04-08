@@ -58,3 +58,10 @@ export const execute = async (command, cwd) => {
 
   exec(command, { cwd });
 };
+
+export const moveAction = async (originalPath, newPath) => {
+  console.log("Would have moved", originalPath, "to", newPath);
+  //return;
+
+  await fs.rename(originalPath, newPath);
+};
