@@ -18,6 +18,20 @@ export class Component {
     this.sendCommand = this.document.getElementById("sendCommand");
     this.uploadFiles = this.document.getElementById("uploadFiles");
     this.rename = this.document.getElementById("rename");
+    this.emptyFile = this.document.getElementById("emptyFile");
+
+    this.emptyFile.addEventListener("click", async () => {
+      let f = new File([], "file.txt");
+
+      let formData = new FormData();
+      formData.append("file", f);
+      await fetch("/upload/?path=" + encodeURIComponent(this.path), {
+        method: "POST",
+        body: formData,
+      });
+
+      this.refresh();
+    });
 
     this.uploadFiles.addEventListener("click", () => {
       let input = document.createElement("input");
