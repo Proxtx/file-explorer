@@ -34,3 +34,15 @@ export const rename = async (pwd, originalPath, newName) => {
   let newPath = path.format(obj);
   manager.moveAction(originalPath, newPath);
 };
+
+export const loadFile = async (pwd, path) => {
+  let authentication = auth(pwd);
+  if (!authentication.success) return authentication;
+  return await manager.loadFile(path);
+};
+
+export const writeFile = async (pwd, path, content) => {
+  let authentication = auth(pwd);
+  if (!authentication.success) return authentication;
+  return await manager.writeFile(path, content);
+};

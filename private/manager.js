@@ -65,3 +65,11 @@ export const moveAction = async (originalPath, newPath) => {
 
   await fs.rename(originalPath, newPath);
 };
+
+export const loadFile = async (path) => {
+  return await fs.readFile(path, "utf8");
+};
+
+export const writeFile = async (path, content) => {
+  await fs.writeFile(path, content, "utf8");
+};

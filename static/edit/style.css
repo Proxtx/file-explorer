@@ -1,0 +1,14 @@
+#mainWrap {
+  padding: var(--contentSpacing);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--contentSpacing);
+}
+
+m-overwrite-container {
+  --backgroundColor: #3d405b;
+}
