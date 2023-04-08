@@ -1,0 +1,7 @@
+#mainWrap {
+  padding: var(--contentSpacing);
+}
+
+m-overwrite-container {
+  --backgroundColor: #3d405b;
+}
