@@ -17,6 +17,10 @@ const refreshFiles = async () => {
 
   filesWrap.innerHTML = "";
 
+  if (!path.endsWith("/")) path += "/";
+
+  overlay.component.path = path;
+
   let files = (
     await manager.listDirectory(cookie.pwd, path, overlay.component.sorting)
   ).directory;
@@ -29,8 +33,6 @@ const refreshFiles = async () => {
     nP.pop();
     nP = nP.join("/");
   } else nP = path;
-
-  overlay.component.path = nP;
 
   files.unshift({
     path: nP,

@@ -39,21 +39,22 @@ export const listDirectory = async (folder, sorting) => {
 
 export const deleteAction = async (path) => {
   console.log("Would have deleted", path);
-  return;
+  //return;
 
   await fs.rm(path, { recursive: true, force: true });
 };
 
 export const copyAction = async (file, targetDir) => {
-  console.log("Would have copied", file, "to", targetDir);
-  return;
+  let targetLocation = path.resolve(targetDir + "/" + path.basename(file));
+  console.log("Would have copied", file, "to", targetLocation);
+  //return;
 
-  await fs.cp(file, targetDir, { recursive: true });
+  await fs.cp(file, targetLocation, { recursive: true });
 };
 
 export const execute = async (command, cwd) => {
   console.log("Would have executed", command, "in", cwd);
-  return;
+  //return;
 
   exec(command, { cwd });
 };

@@ -14,6 +14,19 @@ export class Component {
     this.copyButton = this.document.getElementById("copy");
     this.pasteButton = this.document.getElementById("paste");
     this.deleteButton = this.document.getElementById("delete");
+    this.command = this.document.getElementById("command");
+    this.sendCommand = this.document.getElementById("sendCommand");
+
+    this.command.component.input.addEventListener("keyup", () => {
+      if (this.command.component.value.length > 0) {
+        this.sendCommand.component.component.values.disabled = false;
+      } else this.sendCommand.component.component.values.disabled = true;
+    });
+
+    this.sendCommand.addEventListener("click", () => {
+      if (this.sendCommand.component.component.values.disabled) return;
+      manager.execute(cookie.pwd, this.command.component.value, this.path);
+    });
 
     this.copyButton.addEventListener("click", () => {
       this.copy(this.highlightedFiles);
@@ -43,7 +56,6 @@ export class Component {
 
     this.pasteButton.addEventListener("click", async () => {
       for (let file of this.filesInClipboard) {
-        console.log(this.path);
         await manager.copyAction(
           cookie.pwd,
           file.component.content.path,

@@ -19,7 +19,7 @@ export const copyAction = async (pwd, original, targetDir) => {
   await manager.copyAction(original, targetDir);
 };
 
-export const command = async (pwd, command, cwd) => {
+export const execute = async (pwd, command, cwd) => {
   let authentication = auth(pwd);
   if (!authentication.success) return authentication;
   await manager.execute(command, cwd);
