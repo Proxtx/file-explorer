@@ -20,5 +20,11 @@ input.component.value = content;
 
 save.addEventListener("click", () => {
   manager.writeFile(cookie.pwd, path, input.component.value);
-  location.pathname = "/explore";
+  let u = new URL(location.href);
+  let folderPath = path.split("/");
+  folderPath.pop();
+  folderPath = folderPath.join("/");
+  u.searchParams.set("path", encodeURIComponent(folderPath));
+  u.pathname = "/explore/";
+  window.location = u;
 });

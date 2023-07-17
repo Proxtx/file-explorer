@@ -3,9 +3,15 @@ import * as _ from "/lib/guiLoader.js";
 
 let path = "/";
 
+let u = new URL(location.href);
+if (u.searchParams.get("path"))
+  path = decodeURIComponent(u.searchParams.get("path"));
+
 const filesWrap = document.getElementById("filesWrap");
 const topBar = document.getElementById("topBar");
 const overlay = document.getElementById("overlay");
+
+topBar.setAttribute("subtitle", path);
 
 await window.uiBuilder.ready(overlay);
 
