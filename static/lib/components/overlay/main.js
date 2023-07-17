@@ -19,6 +19,7 @@ export class Component {
     this.uploadFiles = this.document.getElementById("uploadFiles");
     this.rename = this.document.getElementById("rename");
     this.emptyFile = this.document.getElementById("emptyFile");
+    this.copyPath = this.document.getElementById("copyPath");
 
     this.emptyFile.addEventListener("click", async () => {
       let f = new File([], "file.txt");
@@ -112,6 +113,10 @@ export class Component {
       }
 
       this.refresh();
+    });
+
+    this.copyPath.addEventListener("click", () => {
+      navigator.clipboard.writeText(this.path);
     });
 
     this.overlay.addEventListener("click", (e) => {
