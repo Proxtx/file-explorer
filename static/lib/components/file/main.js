@@ -11,7 +11,6 @@ export class Component {
         let r = new URL(window.location.href);
         r.pathname = "/edit/";
         r.searchParams.set("path", encodeURIComponent(this.content.path));
-        console.log(r);
         window.location.href = r.href;
       }
     });
